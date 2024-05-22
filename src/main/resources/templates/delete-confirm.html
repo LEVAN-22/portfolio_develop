@@ -15,6 +15,7 @@
 			<p>本当に以下のポートフォリオを削除しますか？</p>
 			<h3 th:text="${item.title}">タイトル</h3>
 			<p th:text="${item.description}">説明</p>
+			
 			<form th:action="@{/delete/{id}(id=${item.id})}" method="post">
 				<button type="submit">削除</button>
 				<a th:href="@{/}">キャンセル</a>

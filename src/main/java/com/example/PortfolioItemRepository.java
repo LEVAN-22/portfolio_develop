@@ -7,5 +7,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface PortfolioItemRepository extends JpaRepository<PortfolioItem, Long> {
-    List<PortfolioItem> findByTitleContainingOrDescriptionContaining(String title, String description);
+	List<PortfolioItem> findByTitleContainingOrDescriptionContaining(String title, String description);
 }

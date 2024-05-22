@@ -23,7 +23,7 @@
 					<h3 th:text="${item.title}">タイトル</h3>
 					<p th:text="${item.description}">説明</p>
 					<img th:src="${item.imageUrl}" alt="画像">
-					<a th:href="${item.link}">リンク</a>
+					<a th:href="${item.link}">成果物へ</a>
 					<a th:href="@{/delete/{id}(id=${item.id})}">削除</a>
 				</div>
 			</div>
