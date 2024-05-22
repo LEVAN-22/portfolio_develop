@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>削除確認</title>
+	<link th:href="@{/styles.css}" rel="stylesheet">
+</head>
+
+<body>
+	<header>
+		<h1>削除確認</h1>
+	</header>
+	<main>
+		<div th:if="${item != null}">
+			<p>本当に以下のポートフォリオを削除しますか？</p>
+			<h3 th:text="${item.title}">タイトル</h3>
+			<p th:text="${item.description}">説明</p>
+			<form th:action="@{/delete/{id}(id=${item.id})}" method="post">
+				<button type="submit">削除</button>
+				<a th:href="@{/}">キャンセル</a>
+			</form>
+		</div>
+		<div th:if="${item == null}">
+			<p>指定されたポートフォリオが見つかりません。</p>
+			<a th:href="@{/}">一覧に戻る</a>
+		</div>
+	</main>
+	<footer>
+		<p>&copy; 2024 ポートフォリオサイト</p>
+	</footer>
+</body>
+
+</html>

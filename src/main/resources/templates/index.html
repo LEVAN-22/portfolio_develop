@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>ポートフォリオサイト</title>
+	<link th:href="@{/styles.css}" rel="stylesheet">
+</head>
+
+<body>
+	<header>
+		<h1>ポートフォリオ</h1>
+	</header>
+	<main>
+		<div>
+			<h2>ポートフォリオ一覧</h2>
+			<form action="/search" method="get" class="search-form">
+				<input type="text" name="query" placeholder="検索">
+				<button type="submit">検索</button>
+			</form>
+			<a href="/create" class="create-button">ポートフォリオ作成</a>
+			<div class="grid-container" th:each="item : ${items}">
+				<div class="grid-item">
+					<h3 th:text="${item.title}">タイトル</h3>
+					<p th:text="${item.description}">説明</p>
+					<img th:src="${item.imageUrl}" alt="画像">
+					<a th:href="${item.link}">リンク</a>
+					<a th:href="@{/delete/{id}(id=${item.id})}">削除</a>
+				</div>
+			</div>
+		</div>
+	</main>
+	<footer>
+		<p>&copy; 2024 ポートフォリオサイト</p>
+	</footer>
+</body>
+
+</html>
