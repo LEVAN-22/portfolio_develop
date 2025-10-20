@@ -1,0 +1,11 @@
+type: object
+properties:
+  valid:
+    type: boolean
+    example: false
+  code:
+    type: integer
+    example: 1001
+  message:
+    type: string
+    example: "メール送信に失敗しました。"

@@ -1,0 +1,78 @@
+send:
+  post:
+    tags:
+      - Admin Mail
+    summary: Send reservation confirmation mail with QR code
+    operationId: sendSuperSaasMail
+    security:
+      - bearerAuth: []
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '../components/schemas/mailRequest.yml'
+          examples:
+            validRequest:
+              summary: 正常なリクエスト例
+              value:
+                id: 123
+                name: "John Doe"
+                dateTime: "2025-10-15T14:00:00+09:00"
+                event: "UESHIMA MUSEUM"
+                country: "JP"
+                coupon: null
+                email: "john@example.com"
+    responses:
+      "200":
+        description: Mail successfully sent
+        content:
+          application/json:
+            schema:
+              $ref: '../components/schemas/successResponse.yml'
+            examples:
+              successExample:
+                summary: メール送信成功例
+                value:
+                  valid: true
+                  code: 0
+                  message: "メールを送信しました。"
+      "400":
+        description: Validation error
+        content:
+          application/json:
+            schema:
+              $ref: '../components/schemas/errorResponse.yml'
+            examples:
+              validationError:
+                summary: バリデーションエラー例
+                value:
+                  valid: false
+                  code: 1000
+                  message: "入力内容が不正です。"
+      "404":
+        description: Template or QR not found
+        content:
+          application/json:
+            schema:
+              $ref: '../components/schemas/errorResponse.yml'
+            examples:
+              templateNotFound:
+                summary: メールテンプレート未検出
+                value:
+                  valid: false
+                  code: 1002
+                  message: "メールテンプレートが見つかりません。"
+      "500":
+        description: Internal server error (e.g., AWS SES failure)
+        content:
+          application/json:
+            schema:
+              $ref: '../components/schemas/errorResponse.yml'
+            examples:
+              awsFailure:
+                summary: AWS SES 送信失敗
+                value:
+                  valid: false
+                  code: 1001
+                  message: "メール送信に失敗しました。"
