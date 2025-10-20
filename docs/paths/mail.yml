@@ -16,10 +16,10 @@ send:
             validRequest:
               summary: 正常なリクエスト例
               value:
-                id: 123
+                id: 1234567
                 name: "John Doe"
                 dateTime: "2025-10-15T14:00:00+09:00"
-                event: "UESHIMA MUSEUM"
+                event: "こっち来いよ"
                 country: "JP"
                 coupon: null
                 email: "john@example.com"

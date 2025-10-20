@@ -12,7 +12,7 @@ servers:
     description: Local server
 
 tags:
-  - name: Admin Mail
+  - name: 漫画一覧
     description: 管理側のメール送信API
 
 paths:
